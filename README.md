@@ -1,9 +1,9 @@
-# Compulab IOT-GATE-IMX8PLUS
+# Compulab IOT-DIN-IMX8PLUS
 
 This is the base Nerves System configuration for the
-[Compulab IOT-GATE-IMX8PLUS](https://www.compulab.com/products/iot-gateways/iot-gate-imx8plus-industrial-arm-iot-gateway).
+[Compulab IOT-DIN-IMX8PLUS](https://www.compulab.com/products/iot-gateways/iot-din-imx8plus-industrial-iot-gateway).
 
-![IOT-GATE](assets/images/iot-gate.jpg)
+![IOT-DIN](assets/images/iot-din.jpg)
 <br><sup>[Image credit](#compulab)</sup>
 
 | Feature        | Description                                                 |
@@ -16,22 +16,23 @@ This is the base Nerves System configuration for the
 | IEx terminal   | UART `ttymxc1`                                              |
 | GPIO, I2C, SPI | Yes - [Elixir Circuits](https://github.com/elixir-circuits) |
 | Display        | Yes                                                         |
-| Ethernet       | Yes - ETH2 port is recognized as `eth0`                     |
+| Ethernet       | Yes                                                         |
 | WiFi           | Yes                                                         |
 | Bluetooth      | Yes                                                         |
+| Cellular       | Yes - With VintageNetQMI                                    |
 | RTC            | Yes                                                         |
 | HW Watchdog    | Yes                                                         |
 
 [Image credit](#compulab): This image is from
-[compulab.com](https://www.compulab.com/products/iot-gateways/iot-gate-imx8plus-industrial-arm-iot-gateway).
+[compulab.com](https://www.compulab.com/products/iot-gateways/iot-din-imx8plus-industrial-iot-gateway).
 
 ## Getting started
 
-The IOT-GATE-IMX8PLUS gateway expects the bootloader to be located on hardware BOOT partition 1. When flashing firmware, ensure that both the bootloader and a complete disk image, generated using the fwup CLI tool, are provided.
+The IOT-DIN-IMX8PLUS gateway expects the bootloader to be located on hardware BOOT partition 1. When flashing firmware, ensure that both the bootloader and a complete disk image, generated using the fwup CLI tool, are provided.
 
 ### Wi-Fi
 
-The IOT-GATE-IMX8PLUS can be ordered with an Intel Wi-Fi 6 AX210 / Bluetooth module. Wi-Fi can be enabled by loading the following kernel module.
+The IOT-DIN-IMX8PLUS can be ordered with an internal NXP 88W8997 wifi/ Bluetooth module or with a WiFi 6E AX210 extension module. Wi-Fi can be enabled by loading the following kernel module.
 
 ```elixir
 iex> cmd "modprobe iwlwifi"
@@ -46,20 +47,20 @@ iex> cmd "modprobe iwlwifi"
 
 #### Flashing a firmware image
 
-The initial firmware image needs to be flashed to the IOT-GATE via the USB programming port (not console port). This involves passing the bootloader and disk image to `uuu`, which will flash the device.
+The initial firmware image needs to be flashed to the IOT-DIN via the USB programming port (not console port). This involves passing the bootloader and disk image to `uuu`, which will flash the device.
 
 Begin by connecting a USB cable from the provisioning computer to the device's programming port. Keep the device powered off.
 
 Enter your Nerves application's project directory. Build your application firmware to produce the files for the next steps. Set `MIX_TARGET` with the target name for your system in your application's `mix.exs` file.
 
 ```
-MIX_TARGET=gate mix firmware
+MIX_TARGET=iot-din-imx8 mix firmware
 ```
 
 The bootloader image `imx8-boot-sd.bin` is built by the Nerves system, and is located inside the Nerves artifact for this system. Replace or set `$VERSION` with your version of this Nerves system.
 
 ```
-~/.nerves/artifacts/nerves_system_iot_gate_imx8plus-portable-$VERSION/images/imx8-boot-sd.bin
+~/.nerves/artifacts/nerves_system_iot_din_imx8plus-portable-$VERSION/images/imx8-boot-sd.bin
 ```
 
 Convert the Nerves `.fw` firmware bundle into a raw disk image. Replace or set `$TARGET` with the target & environment names the firmware was built for (`gate_dev`).

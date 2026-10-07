@@ -20,7 +20,7 @@ endef
 
 define HOST_COMPULAB_POST_INSTALL_HOOK
 	$(EXTRA_ENV) $(HOST_COMPULAB_DIR)/scripts/imx8-bootloader-prepare.sh \
-		"unused" $(UBOOT_DIR)/arch/arm/dts/iot-gate-imx8plus.dtb
+		"unused" $(UBOOT_DIR)/arch/arm/dts/iotdin-imx8p.dtb
 endef
 
 define HOST_COMPULAB_CONFIGURE_CMDS
