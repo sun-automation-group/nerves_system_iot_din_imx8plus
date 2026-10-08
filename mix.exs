@@ -1,8 +1,8 @@
-defmodule NervesSystemIotGateIMX8Plus.MixProject do
+defmodule NervesSystemIotDinIMX8Plus.MixProject do
   use Mix.Project
 
-  @github_organization "redwirelabs"
-  @app :nerves_system_iot_gate_imx8plus
+  @github_organization "sun-automation-group"
+  @app :nerves_system_iot_din_imx8plus
   @source_url "https://github.com/#{@github_organization}/#{@app}"
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()

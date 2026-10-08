@@ -77,7 +77,7 @@ Enter the following command, which will search for the device. Power on the devi
 ```
 uuu \
   -b emmc_all \
-  ~/.nerves/artifacts/nerves_system_iot_gate_imx8plus-portable-$VERSION/images/imx8-boot-sd.bin \
+  ~/.nerves/artifacts/nerves_system_iot_din_imx8plus-portable-$VERSION/images/imx8-boot-sd.bin \
   _build/$TARGET/nerves/images/firmware.img
 ```
 
